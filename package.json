@@ -1,0 +1,45 @@
+{
+  "name": "react-tiny-kit",
+  "version": "1.0.0",
+  "description": "a no frills react starter kit",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "REACT_ENV=dev node hot-sync.js"
+  },
+  "dependencies": {
+    "axios": "^0.15.2",
+    "css-loader": "^0.25.0",
+    "history": "^4.3.0",
+    "immutable": "^3.8.1",
+    "radium": "^0.18.1",
+    "react": "^15.3.2",
+    "react-cookie": "^0.4.8",
+    "react-dom": "^15.3.2",
+    "react-redux": "^4.4.5",
+    "react-responsive": "^1.2.1",
+    "react-router": "^2.8.1",
+    "react-router-redux": "^4.0.6",
+    "redux": "^3.6.0",
+    "redux-segment": "^1.5.0",
+    "redux-thunk": "^2.1.0",
+    "style-loader": "^0.13.1"
+  },
+  "devDependencies": {
+    "babel-core": "*",
+    "babel-eslint": "^7.1.0",
+    "babel-loader": "*",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-preset-es2015": "*",
+    "babel-preset-react": "*",
+    "babel-preset-stage-1": "^6.16.0",
+    "browser-sync": "^2.18.2",
+    "react-hot-loader": "^1.3.1",
+    "redux-devtools": "^3.3.1",
+    "redux-devtools-dock-monitor": "^1.1.1",
+    "redux-devtools-log-monitor": "^1.1.0",
+    "webpack": "^1.13.2",
+    "webpack-dev-middleware": "^1.8.4",
+    "webpack-dev-server": "^1.16.1",
+    "webpack-hot-middleware": "^2.13.2"
+  }
+}
