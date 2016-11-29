@@ -5,4 +5,4 @@ clone, npm install, npm start
 
 http://localhost:3000
 
-todo: eslint, jest, CI
+todo: ~~eslint~~, jest, CI
