@@ -8,10 +8,10 @@
     "start": "REACT_ENV=dev node hot-sync.js"
   },
   "dependencies": {
-    "axios": "^0.15.2",
     "css-loader": "^0.25.0",
     "history": "^4.4.1",
     "immutable": "^3.8.1",
+    "node-uuid": "^1.4.7",
     "query-string": "^4.2.3",
     "radium": "^0.18.1",
     "rc-animate": "^2.3.1",

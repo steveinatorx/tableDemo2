@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import TableDemo from './components/TableDemo';
-import { getUUID } from './actions';
+import { getUUID, deleteRow } from './actions';
 
 export const TableDemoContainer = connect(
 function mapStateToProps(state) {
@@ -8,9 +8,12 @@ function mapStateToProps(state) {
     state: state
   };
 },
+
+// action catalog
 function mapDispatchToProps(dispatch) {
   return {
-    getUUID: () => dispatch(getUUID())
+    getUUID: () => dispatch(getUUID()),
+    deleteRow: (uuid) => dispatch(deleteRow(uuid))
   };
 }
 )(TableDemo);

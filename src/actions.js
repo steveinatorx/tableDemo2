@@ -21,6 +21,24 @@ export function setUUID(theUuid) {
   };
 }
 
+export const DELETE_ROW = 'DELETE_ROW';
+export function deleteRow(theUuid) {
+  
+  console.log('in deleteRow', theUuid);
+  
+  return {
+    type: DELETE_ROW,
+    payload: {
+      uuid: theUuid
+    }
+    // segment metadata int
+    /*meta: {
+      analytics: EventTypes.track
+    }*/
+  };
+}
+
+
 // thunk
 export function getUUID() {
   if (!cookie.load('helloWorld')) {
