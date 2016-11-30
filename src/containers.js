@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
-import HelloWorld from './components/HelloWorld';
+import TableDemo from './components/TableDemo';
 import { getUUID } from './actions';
 
-export const HelloWorldContainer = connect(
+export const TableDemoContainer = connect(
 function mapStateToProps(state) {
   return {
     state: state
@@ -13,4 +13,4 @@ function mapDispatchToProps(dispatch) {
     getUUID: () => dispatch(getUUID())
   };
 }
-)(HelloWorld);
+)(TableDemo);

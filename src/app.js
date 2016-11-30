@@ -3,18 +3,19 @@ import { render } from 'react-dom';
 import { applyMiddleware, createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 import reducer from './reducers/reducers';
-import routerReducer  from './reducers/routing';
-import { HelloWorldContainer } from './containers';
-import createHistory from 'history/createBrowserHistory'
-import { routerMiddleware, syncHistoryWithStore } from 'react-router-redux';
+import routerReducer from './reducers/routing';
+import { TableDemoContainer } from './containers';
+// import createHistory from 'history/createBrowserHistory'
+// import { routerMiddleware, syncHistoryWithStore } from 'react-router-redux';
 import thunk from 'redux-thunk';
-import {browserHistory} from 'react-router';
+// import {browserHistory} from 'react-router';
 
-import cookie from 'react-cookie';
+// import cookie from 'react-cookie';
 import { createTracker } from 'redux-segment';
-var __CONFIG__ = require('__CONFIG__');
 
-//segment 
+// var __CONFIG__ = require('__CONFIG__');
+
+// segment
 /*
     !function(){var
   analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","page","once","off","on"];analytics.factory=function(t){
@@ -31,26 +32,26 @@ var __CONFIG__ = require('__CONFIG__');
 */
 
 
-const tracker = createTracker(); 
+const tracker = createTracker();
 
-const rootReducer = combineReducers( { reducer, routing: routerReducer} );  
+const rootReducer = combineReducers({ reducer, routing: routerReducer});
 const middleware = applyMiddleware(
-  routerMiddleware(browserHistory),
+ // routerMiddleware(browserHistory),
   thunk,
   tracker
 );
 
-  /*let devTools = []
+  /* let devTools = []
   if (typeof document !== 'undefined') {
     devTools = [ DevTools.instrument() ]
-  }*/
+  } */
 
 const store = createStore(rootReducer, middleware);
 
 //anchor me to a <div id="app" />
 render(
   <Provider store={store} >
-    <HelloWorldContainer />
+    <TableDemoContainer />
   </Provider>,
   document.getElementById('app')
 );

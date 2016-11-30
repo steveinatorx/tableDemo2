@@ -1,7 +1,8 @@
 {
-  "name": "react-tiny-kit",
+  "name": "demoTable",
   "version": "1.0.0",
-  "description": "a no frills react starter kit",
+  "description": "a demo table for an interview",
+  "license": "MIT",
   "main": "src/app.js",
   "scripts": {
     "start": "REACT_ENV=dev node hot-sync.js"
@@ -9,9 +10,12 @@
   "dependencies": {
     "axios": "^0.15.2",
     "css-loader": "^0.25.0",
-    "history": "^4.3.0",
+    "history": "^4.4.1",
     "immutable": "^3.8.1",
+    "query-string": "^4.2.3",
     "radium": "^0.18.1",
+    "rc-animate": "^2.3.1",
+    "rc-table": "^5.2.1",
     "react": "^15.3.2",
     "react-cookie": "^0.4.8",
     "react-dom": "^15.3.2",
