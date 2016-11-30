@@ -9,18 +9,19 @@ import '../../css/skeleton-alerts.css';
 import styles from '../style';
 
 export default class HelloWorld extends React.Component {
-  static defaultProps = {
-    showMe: false
-  }
-  static propTypes = {
-    showMe: React.PropTypes.bool.isRequired
-  }
-  state = {
-    showMe: false
-  }
   constructor(props) {
     super(props);
     this._toggleShowMe = this._toggleShowMe.bind(this);
+    this.state = {
+      showMe: props.showMe
+    };
+    console.log(props);
+  }
+  static defaultProps = {
+    showMe: true
+  }
+  static propTypes = {
+    showMe: React.PropTypes.bool.isRequired
   }
   _toggleShowMe() {
     this.setState({showMe: !this.state.showMe});
@@ -34,7 +35,7 @@ export default class HelloWorld extends React.Component {
                   press me
                 </button>
                 <p style={Object.assign({}, this.state.showMe ? {} : styles.hidden)}>
-                  hello world!!!
+                  hello world!!
                 </p>
             </div>
         </div>
