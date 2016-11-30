@@ -21,13 +21,10 @@ export function setUUID(theUuid) {
   };
 }
 
-export const DELETE_ROW = 'DELETE_ROW';
-export function deleteRow(theUuid) {
-  
-  console.log('in deleteRow', theUuid);
-  
+export const TOGGLE_CHECK = 'TOGGLE_CHECK';
+export function toggleCheck(theUuid) {
   return {
-    type: DELETE_ROW,
+    type: TOGGLE_CHECK,
     payload: {
       uuid: theUuid
     }
@@ -38,6 +35,16 @@ export function deleteRow(theUuid) {
   };
 }
 
+export const DELETE_ROWS = 'DELETE_ROWS';
+export function deleteRows() {
+  return {
+    type: DELETE_ROWS
+    // segment metadata int
+    /*meta: {
+      analytics: EventTypes.track
+    }*/
+  };
+}
 
 // thunk
 export function getUUID() {

@@ -28,7 +28,7 @@ export default class TableDemo extends React.Component {
     console.log(this.state.data);
     this.columns = [
       {title: '', width: 50, dataIndex: 'check', key: 'check', render: (text, record, idx) =>
-      <input type="checkbox" onChange={e => this._toggleCheck(record, idx, e)}/>},
+      <input type="checkbox" checked={record.check} onChange={e => this._toggleCheck(record, idx, e)}/>},
       {title: 'Type', dataIndex: 'Type', key: 'type', width: 100},
       {title: 'Name', dataIndex: 'Name', key: 'name', width: 100},
       {title: 'Title', dataIndex: 'Title', key: 'title', width: 100},
@@ -52,18 +52,8 @@ export default class TableDemo extends React.Component {
     this.setState({showMe: !this.state.showMe});
   }
   _deleteChecked() {
-    console.log(this.state.checkList);
     //this.state.checkList.map(o => this.props.deleteRow(o)); 
-    
-    
-    let self=this;
-    
-    this.state.checkList.map(function (o) {
-      console.log('del->', o);
-     self.props.deleteRow(o);
-
-    });
-    this.setState({ checkList: []})
+     this.props.deleteRows();
   }
 /*
   _onDelete(a,b,e) {
@@ -76,16 +66,7 @@ export default class TableDemo extends React.Component {
     //this.setState({ cData: data });
   }*/
   _toggleCheck(key) {
-    console.log('toggle', key.uuid);
-    if (this.state.checkList.indexOf(key.uuid) > -1) {
-      // untoggle, treat our state as immutable
-      let newStateCheckList = without(this.state.checkList, key.uuid);
-      this.setState({ checkList: newStateCheckList})
-    } else {
-      // toggle, treat our state as immutable
-      let newStateCheckList=[...this.state.checkList, key.uuid];
-      this.setState({ checkList: newStateCheckList});
-    }
+    this.props.toggleCheck(key.uuid);
   }
   // a "tasteful" animation ;-)
   _getBodyWrapper(body) {
