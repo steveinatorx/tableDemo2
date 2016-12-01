@@ -3,7 +3,7 @@ export default {
     visibility: 'hidden'
   },
   topDiv: {
-    marginTop: '5em'
+    marginTop: '2em'
   },
   testBorder: {
     borderWidth: '1px',

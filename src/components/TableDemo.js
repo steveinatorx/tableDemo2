@@ -11,21 +11,20 @@ const Table = require('rc-table');
 import Dialog from 'rc-dialog';
 import Animate from 'rc-animate';
 import {Form, Field} from 'simple-react-forms';
-
 import 'rc-table/assets/index.css';
 import 'rc-table/assets/animation.css';
 
 import styles from '../style';
-
 export default class TableDemo extends React.Component {
   constructor(props) {
     super(props);
+    this._toggleCollapse = this._toggleCollapse.bind(this);
     this._deleteChecked = this._deleteChecked.bind(this);
     this._addRowDialog = this._addRowDialog.bind(this);
     this._onCloseDialog = this._onCloseDialog.bind(this);
     this._submitDialog = this._submitDialog.bind(this);
     this.state = {
-      isCollapsed: false,
+      isVisible: true,
       // pull initial state data from reducer hydration
       cData: props.state.reducer.getIn(['data']).toJS(),
       // we will track check toggles as a state as it seems the columns prop will not hoist a dynamic ref
@@ -83,10 +82,17 @@ export default class TableDemo extends React.Component {
     if (this.refs.simpleForm.isValid()) {
       console.log(this.refs.simpleForm.getFormValues());
       this.props.addRow(this.refs.simpleForm.getFormValues())  
+      this.setState({
+        dialogVisible: false
+      });
+
     }
   }
   _toggleCollapse(){
-    this.setState({})  
+    /* NOTE: some interesting behavior here adding css transitions to the main div and rerendering the table component,
+     in the spirit of not letting perfect be the enemy of functional for a coding excercise
+     will just toggle a simple visibility: hidden class. not as pretty but it works */
+    this.setState({isVisible: !this.state.isVisible});
   }
   // a "tasteful" animation ;-)
   _getBodyWrapper(body) {
@@ -96,21 +102,38 @@ export default class TableDemo extends React.Component {
       </Animate>
     );
   }
+  
   render() {
     return (
       <div className="container" style={styles.topDiv}>
         <div className="sixteen columns">
-          <div style={styles.testBorder} className="row sixteen columns">
+          <div className="block row sixteen columns">
             <h5 style={styles.inlineStyle} className="demoBlue">External Contacts</h5>
             <div className="u-pull-right">
+            {this.state.isVisible &&
               <label className="collapseLabel">
-              <a className="button button-icon">
-               <i className="fa fa-cog" />
+              <a className="button button-icon collapseBtn" onClick={this._toggleCollapse}>
+               <i className="fa fa-minus" />
               </a>
                 Collapse
               </label>
+            }
+            {!this.state.isVisible &&
+              <label className="collapseLabel">
+              <a className="button button-icon collapseBtn" onClick={this._toggleCollapse}>
+               <i className="fa fa-plus" />
+              </a>
+                Expand
+              </label>
+            }
+
             </div>
+          <div className="rows">
+            Select the client contacts associated with this offer.
+          </div>
             </div>
+
+              <div className="mainDiv" style={Object.assign({}, this.state.isVisible ? {} : styles.hidden)}>
                 <button className="button-primary" onClick={this._addRowDialog}>
                   add row
                 </button>
@@ -139,13 +162,19 @@ export default class TableDemo extends React.Component {
                 <Form ref="simpleForm">
                   <Field
                     name='Type'
-                    label='Enter Type'
+                    placeholder='Enter Type'
                     type='text'
+                    validators= {[
+                    'required'
+                    ]}
                   />
                   <Field
                     name='Name'
-                    label='Enter Name'
+                    placeholder='Enter Name'
                     type='text'
+                    validators= {[
+                    'required'
+                    ]}
                   />
                   <Field
                     name="Title"
@@ -158,8 +187,7 @@ export default class TableDemo extends React.Component {
               </Form>
               <button onClick={this._submitDialog} className="button-primary">Submit</button>
               </Dialog>
- 
-                
+            </div>
             </div>
       </div>
     );
