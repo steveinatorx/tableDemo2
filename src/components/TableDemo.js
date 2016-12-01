@@ -5,8 +5,6 @@ import '../../css/skeleton-fontawesome-buttons.css';
 import '../../css/font-awesome.css';
 import '../../css/myTable.css';
 // var MediaQuery = require('react-responsive');
-// var classNames = require('classnames');
-// var Radium = require('radium');
 const Table = require('rc-table');
 import Dialog from 'rc-dialog';
 import Animate from 'rc-animate';
@@ -58,14 +56,11 @@ export default class TableDemo extends React.Component {
     this.props.deleteRows();
   }
   _addRowDialog() {
-    console.log('dia');
     this.setState({
       dialogVisible: true
     });
-    console.log(this.state.dialogVisible);
   }
   _onCloseDialog() {
-    console.log('close dg');
     this.setState({
       dialogVisible: false
     });
@@ -74,7 +69,6 @@ export default class TableDemo extends React.Component {
     this.props.toggleCheck(key.uuid);
   }
   _submitDialog(){
-    console.log(this.refs.simpleForm.isValid());
     if (this.refs.simpleForm.isValid()) {
       console.log(this.refs.simpleForm.getFormValues());
       this.props.addRow(this.refs.simpleForm.getFormValues())  

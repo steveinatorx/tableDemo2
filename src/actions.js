@@ -1,4 +1,4 @@
-import { EventTypes } from 'redux-segment';
+//import { EventTypes } from 'redux-segment';
 // var __CONFIG__ = require('__CONFIG__');
 
 export const SET_UUID = 'SET_UUID';
@@ -8,11 +8,11 @@ export function setUUID(theUuid) {
     type: SET_UUID,
     payload: {
       uuid: theUuid
-    },
-    // segment metadata int
+    }
+    /* segment metadata int
     meta: {
       analytics: EventTypes.track
-    }
+    }*/
   };
 }
 

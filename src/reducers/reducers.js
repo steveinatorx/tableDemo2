@@ -16,7 +16,6 @@ export default function reducer(state = init, action) {
   case 'SET_UUID':
     return state.set('uuid', action.payload.uuid);
   case 'DELETE_ROWS':
-    //console.log('del row reducer', action.payload.uuid);
     console.log('i had->', state.getIn(['data']));
     let newDeleteData = state.getIn(['data']).filter(f=>{
       return (!f.get('check'));
@@ -30,7 +29,6 @@ export default function reducer(state = init, action) {
       }
       return f;
     });
-    // return state.setIn(['searchFields', action.payload, 'isActive'], true); 
     return state.setIn(['data'], newToggleData);
   case 'ADD_ROW':
     console.log(action.payload.row);
