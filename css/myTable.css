@@ -1,0 +1,51 @@
+.myTable {
+  border: 1px solid #d1d1d1;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  margin-bottom: 0
+
+}
+tr:nth-child(odd) {
+    background-color: #eff0f1
+}
+
+.myTable th {
+  color: #33C3E6;
+  border-right: 1px solid #d1d1d1;
+  background: white !important;
+}
+
+.myTable td {
+  border-right: 1px solid #d1d1d1;
+  border-bottom: none !important;
+  vertical-align: middle;
+}
+
+.demoBlue {
+  color: #33C3E6
+}
+
+input[type=checkbox] {
+  transform: scale(1.2);
+}
+
+.collapseLabel {
+  font-weight: normal !important;
+}
+
+.collapseBtn {
+  margin-right: 1em;
+}
+
+body {
+  color: gray !important;
+}
+
+.mainDiv {
+  margin-top: 5em !important;
+}
+
+.block {
+  display: block;
+}
