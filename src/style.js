@@ -15,5 +15,11 @@ export default {
   },
   disableBtn: {
     opacity: 0.5
+  },
+  dialogStyle: {
+    width: '20em'
+  },
+  inlineStyle: {
+    display: 'inline'
   }
 };

@@ -46,6 +46,20 @@ export function deleteRows() {
   };
 }
 
+export const ADD_ROW = 'ADD_ROW';
+export function addRow(row) {
+  return {
+    type: ADD_ROW,
+    payload: {
+      row: row
+    }
+    // segment metadata int
+    /*meta: {
+      analytics: EventTypes.track
+    }*/
+  };
+}
+
 // thunk
 export function getUUID() {
   if (!cookie.load('helloWorld')) {
