@@ -5,7 +5,8 @@
   "license": "MIT",
   "main": "src/app.js",
   "scripts": {
-    "start": "REACT_ENV=dev node hot-sync.js"
+    "dev:hot": "REACT_ENV=dev node hot-sync.js",
+    "test": "mocha --require ignore-styles -w test/helpers/browser.js test/*.spec.js"
   },
   "dependencies": {
     "css-loader": "^0.25.0",
@@ -26,6 +27,9 @@
     "react-router": "^2.8.1",
     "react-router-redux": "^4.0.6",
     "redux": "^3.6.0",
+    "redux-localstorage": "^1.0.0-rc5",
+    "redux-localstorage-filter": "^0.1.1",
+    "redux-localstorage-immutable": "^1.0.4",
     "redux-segment": "^1.5.0",
     "redux-thunk": "^2.1.0",
     "simple-react-forms": "^1.1.1",
@@ -41,9 +45,11 @@
     "babel-preset-stage-0": "^6.16.0",
     "babel-preset-stage-1": "^6.16.0",
     "browser-sync": "^2.18.2",
+    "chai": "^3.5.0",
     "enzyme": "^2.6.0",
     "eslint": "^3.11.1",
     "file-loader": "^0.9.0",
+    "ignore-styles": "^5.0.1",
     "jsdom": "^9.8.3",
     "mocha": "^3.2.0",
     "react-addons-test-utils": "^15.4.1",
@@ -51,6 +57,7 @@
     "redux-devtools": "^3.3.1",
     "redux-devtools-dock-monitor": "^1.1.1",
     "redux-devtools-log-monitor": "^1.1.0",
+    "redux-mock-store": "^1.2.1",
     "url-loader": "^0.5.7",
     "webpack": "^1.13.2",
     "webpack-dev-middleware": "^1.8.4",

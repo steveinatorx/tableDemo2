@@ -17,6 +17,7 @@ import 'rc-table/assets/animation.css';
 import styles from '../style';
 export default class TableDemo extends React.Component {
   constructor(props) {
+    console.log(props.state.getIn(['data']).toJS());
     super(props);
     this._toggleCollapse = this._toggleCollapse.bind(this);
     this._deleteChecked = this._deleteChecked.bind(this);
@@ -25,13 +26,8 @@ export default class TableDemo extends React.Component {
     this._submitDialog = this._submitDialog.bind(this);
     this.state = {
       isVisible: true,
-      // pull initial state data from reducer hydration
-      cData: props.state.reducer.getIn(['data']).toJS(),
-      // we will track check toggles as a state as it seems the columns prop will not hoist a dynamic ref
-      checkList: [],
       dialogVisible: false
     };
-    console.log(this.state.data);
     this.columns = [
       {title: '', width: 25, dataIndex: 'check', key: 'check', render: (text, record, idx) =>
       <input type="checkbox" checked={record.check} onChange={e => this._toggleCheck(record, idx, e)}/>},
@@ -141,7 +137,7 @@ export default class TableDemo extends React.Component {
                 </button>
                <Table
                   columns={this.columns}
-                  data={this.props.state.reducer.getIn(['data']).toJS()}
+                  data={this.props.state.getIn(['data']).toJS()}
                   getBodyWrapper={this._getBodyWrapper}
                   scroll={{x: true}}
                   className="myTable"
@@ -180,6 +176,14 @@ export default class TableDemo extends React.Component {
                     'required'
                     ]}
                   />
+                  <Field
+                  name="Phone"
+                  placeholder="Enter Phone"
+                  type="text"
+                  validators= {[
+                  'required'
+                  ]}
+                /> 
               </Form>
               <button onClick={this._submitDialog} className="button-primary">Submit</button>
               </Dialog>
