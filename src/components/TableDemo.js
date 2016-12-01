@@ -102,7 +102,6 @@ export default class TableDemo extends React.Component {
       </Animate>
     );
   }
-  
   render() {
     return (
       <div className="container" style={styles.topDiv}>
@@ -147,8 +146,6 @@ export default class TableDemo extends React.Component {
                   scroll={{x: true}}
                   className="myTable"
                 />
-                
-               <span>{this.state.showMe}</span>
                <Dialog
                 visible={this.state.dialogVisible}
                 wrapClassName="center"
@@ -156,7 +153,6 @@ export default class TableDemo extends React.Component {
                 maskAnimation="fade"
                 onClose={this._onCloseDialog}
                 style={styles.dialogStyle}
-                //mousePosition={this.state.mousePosition}
               >
                 <p>Add Data</p>
                 <Form ref="simpleForm">
