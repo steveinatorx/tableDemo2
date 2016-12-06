@@ -1,11 +1,19 @@
 const path = require('path');
 const webpack = require('webpack');
 
+var PROD = JSON.parse(process.env.PROD_ENV || '0');
+
+console.log('using PROD?', PROD);
+
+
 module.exports = {
   debug: true,
   devtool: 'source-map',
   //context: path.join(__dirname, 'src', 'js'),
-  entry: [
+  entry: PROD ? [
+    './src/app.js'
+    ] 
+    :  [
     'webpack/hot/dev-server',
     'webpack-hot-middleware/client',
     './src/app.js'
@@ -13,9 +21,15 @@ module.exports = {
   output: {
           path: path.resolve(__dirname, "dist"),
           publicPath: '/dist/',
-          filename: 'bundle.js'
+          filename: PROD ? 'bundle.min.js' : 'bundle.js'
   },
-  plugins: [
+  plugins: PROD ? [
+    //compress a prod release
+    new webpack.optimize.UglifyJsPlugin({
+        compress: { warnings: false }
+    })
+  ] :
+    [
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin()
@@ -46,9 +60,9 @@ module.exports = {
     ]
   },
   //add env specific config versus REACT_ENV 
-  resolve: {
+  /*resolve: {
       alias: {
           __CONFIG__: path.join(__dirname, 'config', process.env.REACT_ENV)
       }
-  }
+  }*/
 };
